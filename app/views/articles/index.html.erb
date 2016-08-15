@@ -1,26 +1,44 @@
-<h4><%= link_to 'My Blog', controller: 'articles' %> </h4>
-<%= form_tag("/search", method: "get") do %>
+<h4>My Blog</h4>
+<%= form_tag articles_path, :method => 'get' do %>
 <table>
-  <tr>
-  <td>&nbsp;</td>
-  <td><div class="small-8 columns" ><input type="text" id="right-label" placeholder="Place your search here...">
-</div> <%= link_to 'New', new_article_path %>&nbsp;&nbsp;<%= submit_tag("Search") %></td>
-  <td></td>
-  </tr>
+<tr>
+  <td>
+    <div class="small-14">
+      <div class="row" align="center">
+       <div class="small-14 columns">
+         <%= text_field_tag :search, params[:search] %></div></div></div>
+          </td>
+  <td><%= submit_tag "Search", :name => nil, class:"button" %>&nbsp;&nbsp;<%= link_to 'New', new_article_path, class:"button" %></td>
+</tr>
+
+
+
+<% end %>
+</table>
+<table>
   <tr>
     <th>Title</th>
     <th>Text</th>
     <th>&nbsp;</th>
   </tr>
- 
-  <% @articles.each do |article| %>
+  <%
+  if @articles.any?
+    @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %>&nbsp; &nbsp;<%= link_to 'Delete', article_path(article),
+      <td><%= link_to 'Edit', edit_article_path(article) %>&nbsp &nbsp<%= link_to 'Delete', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
-  <% end %>
+  <% end 
+  else
+    %>
+    <tr>
+    <td>
+    <%= "no record found"%></td></tr>
+  <%
+  end
+  %>
+
 </table>
-<% end %>
