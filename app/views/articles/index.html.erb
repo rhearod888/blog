@@ -1,0 +1,26 @@
+<h4><%= link_to 'My Blog', controller: 'articles' %> </h4>
+<%= form_tag("/search", method: "get") do %>
+<table>
+  <tr>
+  <td>&nbsp;</td>
+  <td><div class="small-8 columns" ><input type="text" id="right-label" placeholder="Place your search here...">
+</div> <%= link_to 'New', new_article_path %>&nbsp;&nbsp;<%= submit_tag("Search") %></td>
+  <td></td>
+  </tr>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>&nbsp;</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %>&nbsp; &nbsp;<%= link_to 'Delete', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
