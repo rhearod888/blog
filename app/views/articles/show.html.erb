@@ -1,18 +1,21 @@
+<h4>Show article</h4>
+<%= form_for @article do |f|   %>
 <div class="row">
     <div class="small-10">
       <div class="row">
         <div class="small-10 columns">
-          <%= @article.title %>
+          <%= f.text_field :title, :value => @article.title %>
         </div>
       </div>
     </div>
     <div class="small-10">
       <div class="row">
         <div class="small-10 columns">
-          <%= @article.text %>
+          <%= f.text_field :text, :value =>@article.text %>
         </div>
       </div>
     </div>
+ <% end %>
     <div class="small-2">
       <div class="row">
         <div class="small-10 small-offset-2 columns">
