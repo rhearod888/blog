@@ -23,3 +23,13 @@ LOG:  database system was shut down at 2016-08-12 21:17:22 PHT
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2016-08-15 20:04:45 PHT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  column articles.condition does not exist at character 39
+STATEMENT:  SELECT COUNT(*) FROM "articles" WHERE "articles"."condition" IN ('title LIKE ? or text LIKE ?', '%1%')

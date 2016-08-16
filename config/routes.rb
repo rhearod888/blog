@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  #post '/articles/search',to: 'articles#search',as: 'getdata'
-  
   resources :articles
-   
-  root  to: 'welcome#index'
+  root  to: 'articles#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
